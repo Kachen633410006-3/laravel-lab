@@ -16,15 +16,30 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('welcome', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('form', function () {
-    return view('form');
-});
-
-Route::post('postProfile', [App\Http\Controllers\ProfileController::class, 'saveProfile']);
+Route::get('index',function() {
+    return view('index');
+})->middleware('auth');
 
 Route::get('/page', [App\Http\Controllers\HomeController::class, 'page']);
+
+Route::get('form',function() {
+    return view('form');
+})->middleware('auth');
+
+Route::post('postProfile', [App\Http\Controllers\ProfileController::class, 'postProfile']);
+
+Route::get('profile_list', [App\Http\Controllers\ProfileController::class, 'getProfile']);
+
+Route::post('delProfile', [App\Http\Controllers\ProfileController::class, 'delProfile']);
+
+Route::get('edit_{id}', [App\Http\Controllers\ProfileController::class, 'formEdit']);
+
+Route::post('updateProfile', [App\Http\Controllers\ProfileController::class, 'updateProfile']);

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class=container>
+<div class="container">
     Profile updated successfully.
     <br>
     <button type="submit" onclick="document.location='home'" class="btn btn-primary">
